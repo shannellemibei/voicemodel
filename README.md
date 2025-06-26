@@ -1,6 +1,6 @@
 # Eva Voice Assistant
 
-A Python voice assistant using Google Cloud Vertex AI for intelligent responses.
+A Python voice assistant for intelligent responses.
 
 ## Features
 
