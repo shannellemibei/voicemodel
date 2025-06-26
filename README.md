@@ -9,36 +9,27 @@ A Python voice assistant using Google Cloud Vertex AI for intelligent responses.
 - AI-powered responses via Google Cloud
 - Predefined commands support
 
-## Quick Setup with Docker
+## Quick Setup
 
-### 1. Prerequisites
-- Docker and Docker Compose installed
-- Google Cloud service account JSON file
-- Microphone and speakers
-
-### 2. Project Structure
-```
-voice-assistant/
-├── v1.py
-├── commands.py
-├── .env
-├── docker-compose.yml
-├── Dockerfile
-└── google_credentials.json
+### 1. Install Dependencies
+```bash
+pip install speechrecognition gtts pydub google-cloud-aiplatform python-dotenv vertexai pyaudio
 ```
 
-### 3. Create Environment File
-Create `.env`:
+### 2. Google Cloud Setup
+1. Create a GCP project and enable Vertex AI API
+2. Create service account and download JSON credentials
+3. Create `.env` file:
 ```env
-GOOGLE_APPLICATION_CREDENTIALS=./google_credentials.json
+GOOGLE_APPLICATION_CREDENTIALS=path/to/credentials.json
 PROJECT_ID=your-project-id
 MODEL_NAME=gemini-pro
 USER=YourName
 HOSTNAME=Eva
 ```
 
-### 4. Create Commands File
-Add to `commands.py`:
+### 3. Create Commands File
+Create `commands.py`:
 ```python
 COMMANDS = {
     "hello": "Hello! How can I help you?",
@@ -47,44 +38,27 @@ COMMANDS = {
 }
 ```
 
-### 5. Run with Docker
+### 4. Run
 ```bash
-# Build and run
-docker-compose up --build
-
-# Or run directly
-docker build -t eva-assistant .
-docker run --rm -it \
-  --device /dev/snd \
-  -v $(pwd)/credentials:/app/credentials \
-  -v /tmp/.X11-unix:/tmp/.X11-unix \
-  -e DISPLAY=$DISPLAY \
-  eva-assistant
+python voice_assistant.py
 ```
 
 ## Usage
 
-1. Container starts automatically
-2. Say "Hey Eva" to wake up
-3. Ask questions or give commands
-4. Say "bye eva" to pause
-5. Ctrl+C to stop container
-
-## Docker Files
-
-The repository includes:
-- `Dockerfile` - Container configuration
-- `docker-compose.yml` - Easy orchestration
-- Audio device mounting for microphone/speaker access
+1. Say "Hey Eva" to wake up
+2. Ask questions or give commands
+3. Say "bye eva" to pause
+4. Say "exit" to quit
 
 ## Troubleshooting
 
-- **Audio issues**: Ensure Docker has access to audio devices
-- **Permissions**: Check microphone permissions on host system
-- **Credentials**: Verify Google Cloud JSON file is mounted correctly
+- **Microphone issues**: Check permissions and device index
+- **Google Cloud errors**: Verify credentials and API access
+- **Audio problems**: Install ffmpeg and check speakers
 
 ## Requirements
 
-- Docker & Docker Compose
-- Google Cloud account with Vertex AI enabled
-- Audio hardware (microphone/speakers)
+- Python 3.7+
+- Microphone and speakers
+- Internet connection
+- Google Cloud account
