@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.env
+.env
+
+# Environment & Credentials
+google_credentials.json
+
+# Docker
+*.log
+.dockerignore
+
+static/
+ttsmodel/
+oldversions/
+evademo/
+venv/
+.vscode
