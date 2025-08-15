@@ -38,8 +38,8 @@ RUN mkdir -p /app/google_credentials.json
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONWARNINGS=ignore
 
-# Expose any necessary ports (if needed for future web interface)
-# EXPOSE 8000
+# Expose any necess
+# EXPOSE 8095
 
 # Run the voice assistant
 CMD ["python", "v2.py"]

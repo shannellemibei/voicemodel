@@ -12,7 +12,6 @@ google_credentials.json
 .dockerignore
 
 static/
-ttsmodel/
 oldversions/
 evademo/
 venv/
